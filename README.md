@@ -1,5 +1,5 @@
-# yadugur_NYC_Taxi
-
+# Yadugur_NYC_Taxi
+```
 #Importing required packages
 import csv
 import datetime
@@ -9,9 +9,11 @@ import matplotlib.pylab as plt
 f = open('trip_data_3.csv', 'r')
 data = csv.reader(f)
 
-#For starters, lets get the names of all the columns
+```
 
-'''
+lets get the names of all the columns
+
+```
 n=0
 for row in data:
     if n>0:
@@ -19,17 +21,18 @@ for row in data:
     else:
         print(row)
     n+=1
-    
+
 ['medallion', ' hack_license', ' vendor_id', ' rate_code', ' store_and_fwd_flag', ' pickup_datetime',
  ' dropoff_datetime', ' passenger_count', ' trip_time_in_secs', ' trip_distance', ' pickup_longitude', 
  ' pickup_latitude', ' dropoff_longitude', ' dropoff_latitude']
- '''
- 
-'''
+
+```
 
 
 
-###Question 1
+
+### Question 1
+```
 min_datetime='2013-03-01 00:00:18'
 max_datetime='2013-03-01 00:00:18'
 no_of_rows=0
@@ -41,30 +44,31 @@ for i in data:
     no_of_rows=no_of_rows+1
 print(f'The datetime range varies from {min_datetime} to {max_datetime}')
 print(f"The number of rows in the file are {no_of_rows}")
-'''
+```
 
-#Question 2
-'''
-Name            - Description
-medallion        - A taxi medallion, also known as a CPNC, is a transferable permit in the United States allowing a taxicab driver to operate           
-hack_license     - license or other authority issued by a governmental agency authorizing a person to drive a taxicab in service to customers in that area. 
-rate_code        - Rate Code means a numerical code designated by AHCCCS to indicate a member's eligibility category
-vendor_id        - a code indicating the provider associated with the trip record
-pickup_datetime  - date and time when the meter was engaged
-dropoff_datetime - date and time when the meter was disengaged
-passenger count  - the number of passengers in the vehicle (driver entered value)
-pickup longitude - the longitude where the meter was engaged
-pickup latitude   - the latitude where the meter was engaged
-dropoff_longitude - the longitude where the meter was disengaged
-dropoff_latitude  - the latitude where the meter was disengaged
-store_and_fwd_flag- This flag indicates whether the trip record was held in vehicle memory before sending to the vendor because the vehicle did not have a connection to the server (Y=store and forward; N=not a store and forward trip)
-trip_time_in_secs - (target) duration of the trip in seconds
 
-'''
 
-#Question 3
-#Printing the sample data
-'''
+### Question 2
+
+- Name                 - Description
+- medallion            - A taxi medallion, also known as a CPNC, is a transferable permit in the United States allowing a taxicab driver to operate           
+- hack_license         - license or other authority issued by a governmental agency authorizing a person to drive a taxicab in service to customers in that area. 
+- rate_code        - Rate Code means a numerical code designated by AHCCCS to indicate a member's eligibility category
+- vendor_id        - a code indicating the provider associated with the trip record
+- pickup_datetime  - date and time when the meter was engaged
+- dropoff_datetime - date and time when the meter was disengaged
+- passenger count  - the number of passengers in the vehicle (driver entered value)
+- pickup longitude - the longitude where the meter was engaged
+- pickup latitude   - the latitude where the meter was engaged
+- dropoff_longitude - the longitude where the meter was disengaged
+- dropoff_latitude  - the latitude where the meter was disengaged
+- store_and_fwd_flag- This flag indicates whether the trip record was held in vehicle memory before sending to the vendor because the vehicle did not have a connection to the server (Y=store and forward; N=not a store and forward trip)
+- trip_time_in_secs - (target) duration of the trip in seconds
+
+
+### Question 3
+#### Printing the sample data
+```
 n=0
 for row in data:
     if n%100000==0:
@@ -73,30 +77,29 @@ for row in data:
     else:
         n+=1
         continue
-    
-'''
 
-#Question 4 
-'''
-Name            - MySQL data types / len
-medallion        - varchar(30)           
-hack_license     - varchar(30) 
-rate_code        - int(5)
-vendor_id        - text(5)
-pickup_datetime  - datetime
-dropoff_datetime - datetime
-passenger count  - int(5)
-pickup longitude - decimal(5,10)
-pickup latitude   - decimal(5,10)
-dropoff_longitude - decimal(5,10)
-dropoff_latitude  - decimal(5,10)
-store_and_fwd_flag- text(5)
-trip_time_in_secs - int(10)
+```
 
-'''
+### Question 4 
 
-####Question 5
-'''
+- Name            - MySQL data types / len
+- medallion        - varchar(30)           
+- hack_license     - varchar(30) 
+- rate_code        - int(5)
+- vendor_id        - text(5)
+- pickup_datetime  - datetime
+- dropoff_datetime - datetime
+- passenger count  - int(5)
+- pickup longitude - decimal(5,10)
+- pickup latitude   - decimal(5,10)
+- dropoff_longitude - decimal(5,10)
+- dropoff_latitude  - decimal(5,10)
+- store_and_fwd_flag- text(5)
+- trip_time_in_secs - int(10)
+
+
+### Question 5
+```
 min_lat=40.645164
 max_lat=40.772614
 min_lon=-73.913925
@@ -124,15 +127,13 @@ for row in data:
         continue
 print(f"The min and max of long is {min_lon} and {max_lon}")
 print(f"The min and max of lat is {min_lat} and {max_lat}")
-'''
-
-'''
- ##Question 6
- 
+```
+ ### Question 6
+``` 
 from math import radians, cos, sin, asin, sqrt
 
 def haversine_distance(lat1, lon1, lat2, lon2):
-    
+
 
     R = 3959.87433 # this is in miles.  For Earth radius in kilometers use 6372.8 km
 
@@ -145,17 +146,17 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     c = 2*asin(sqrt(a))
 
     return R * c
-
-#The values obtained in our project
+```
+#### The values obtained in our project
+```
 lon1 = -73.987343
 lat1 = 40.645164
 lon2 = -73.776703
 lat2 = 40.772614
-
 print('The average trip distance calculated is '+str(haversine_distance(lat1, lon1, lat2, lon2)))
-
-#Histogram
-'''
+```
+#### Histogram
+```
 trip_distance={'0-5':0,'5-10':0,'10-15':0,'15-20':0}
 n=0
 for row in data:
@@ -179,9 +180,9 @@ print (req_list)
 x, y = zip(*req_list)
 print (x,y)
 
-
-#Question 7 
-'''
+```
+### Question 7 
+```
 trip_time=[]
 n=0
 for i in data:
@@ -215,32 +216,13 @@ for i in data:
         n=n+1
 print(f"The distinct values in trip distance is {trip_dist}")
 
-rate_code=[]
-n=0
-for i in data:
-    if (i[3] in rate_code)or (n==0):
-        n=n+1
-        continue
-    else:
-        rate_code.append(i[3])
-        n=n+1
-print(f"The distinct values in rate code is {rate_code}")
+rate_code=[] 
 
-vendor_id=[]
-n=0
-for i in data:
-    if (i[2] in vendor_id)or (n==0):
-        n=n+1
-        continue
-    else:
-        vendor_id.append(i[2])
-        n=n+1
-print(f"The distinct values in vendor id is {vendor_id}")
+```
 
-'''
+### Question 8 
+```
 
-#Question 8 
-'''
 min_passno=1
 max_passno=1
 for row in data:
@@ -288,66 +270,67 @@ for row in data:
     except Exception as e:
         continue
 print(min_tripdist, max_tripdist)
-'''
 
 
+```
 
-#Question 9 
-'''
-avg_pass_count={}
-#f=open('trip_data_3','r')
-#data_input=csv.reader(f)
-n=0
-for row in data:
-    if n==0:
-        n+=1
-        continue
-    else:
-        datetimeobj=datetime.datetime.strptime(row[5],"%Y-%m-%d %H:%M:%S")
-        pass_count=int(row[7])
-        if datetimeobj.hour not in avg_pass_count:
-            avg_pass_count[datetimeobj.hour]=pass_count
+### Question 9 
+
+    avg_pass_count={}
+    #f=open('trip_data_3','r')
+    #data_input=csv.reader(f)
+    n=0
+    for row in data:
+        if n==0:
+            n+=1
+            continue
         else:
-            avg_pass_count[datetimeobj.hour]=avg_pass_count[datetimeobj.hour]+pass_count
-keys=sorted(avg_pass_count)
-for i in keys:
-    print(i, avg_pass_count[i])
-req_list=avg_pass_count.items()
-req_list=sorted(req_list)
-x, y = zip(*req_list)
-y_list=list(y)
-y_list=[z/30 for z in y_list]
-y=tuple(y_list)
-print (x,y)
-plt.plot(x, y)
-plt.xlabel('Hour of the day')
-plt.ylabel('Passenger count')
-plt.title('Chart')
-plt.show()
+            datetimeobj=datetime.datetime.strptime(row[5],"%Y-%m-%d %H:%M:%S")
+            pass_count=int(row[7])
+            if datetimeobj.hour not in avg_pass_count:
+                avg_pass_count[datetimeobj.hour]=pass_count
+            else:
+                avg_pass_count[datetimeobj.hour]=avg_pass_count[datetimeobj.hour]+pass_count
+    keys=sorted(avg_pass_count)
+    for i in keys:
+        print(i, avg_pass_count[i])
+    req_list=avg_pass_count.items()
+    req_list=sorted(req_list)
+    x, y = zip(*req_list)
+    y_list=list(y)
+    y_list=[z/30 for z in y_list]
+    y=tuple(y_list)
+    print (x,y)
+    plt.plot(x, y)
+    plt.xlabel('Hour of the day')
+    plt.ylabel('Passenger count')
+    plt.title('Chart')
+    plt.show()
 
-f.close()
-'''
+    f.close()
 
-#Question 10 
-'''
-outFile= "subset_file.csv"
-f2 = open(outFile,'w')
-f2.write("")
-f2.close()
-f2 = open(outFile,'a')
-writer_obj = csv.writer(f2, lineterminator='\n')
-n=0
-for i in data:
-    if n==999 or n==0:
-        writer_obj.writerow(i)
-        n=1
-    else:
-        n=n+1
 
-f2.close()
-'''
-#Question 11
-'''
+### Question 10 
+```
+    outFile= "subset_file.csv"
+    f2 = open(outFile,'w')
+    f2.write("")
+    f2.close()
+    f2 = open(outFile,'a')
+    writer_obj = csv.writer(f2, lineterminator='\n')
+    n=0
+    for i in data:
+        if n==999 or n==0:
+            writer_obj.writerow(i)
+            n=1
+        else:
+            n=n+1
+
+   f2.close()
+```
+
+#### Question 11
+```
 avg_pass_count={}
 f3=open('subset_file.csv','r')
 data_input=csv.reader(f3)
@@ -378,11 +361,12 @@ plt.xlabel('Hour of the day')
 plt.ylabel('Passenger count')
 plt.title('Chart')
 plt.show()
+```
+#### Observation
 
-#Observation
- 1-Though the passenger count scale is different for both the graphs, we can observe that the trend has been pretty much same for both the datasets
- 2-For both the graphs, we can find the max passenger count was around 20:00 hrs.
- 3-The passenger count was at its minimum at 5:00 in the morning. 
-
+- 1-Though the passenger count scale is different for both the graphs, we can observe that the trend has been pretty much same for both the datasets
+- 2-For both the graphs, we can find the max passenger count was around 20:00 hrs.
+- 3-The passenger count was at its minimum at 5:00 in the morning. 
+```
 f3.close()
-'''
+```
